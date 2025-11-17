@@ -14,8 +14,7 @@ def index():
 #add route
 @app.route('/add', methods=['POST'])
 def add():
-    title = request.form.get('title')
-    todo = Todo(title=title, complete=False)
+    todo = Todo(text=request.form['todoitem'], complete=False)
     db.session.add(todo)
     db.session.commit()
     return redirect(url_for('index'))
